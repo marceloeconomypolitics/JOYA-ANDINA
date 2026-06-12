@@ -103,6 +103,7 @@
     color: rgba(212,175,55,0.25);
     transition: color 0.15s, transform 0.1s;
     user-select: none;
+    -webkit-user-select: none;
     line-height: 1;
   }
 
@@ -601,8 +602,7 @@
   function sendToSheets(entry) {
     var base = 'https://script.google.com/macros/s/AKfycbyhkp1-avRRWgDn9WZsqskJ5y84NWOLY1CKe9X-OGF3KF1hK7i2pNr5e4trIL34Y1Cu5w/exec';
     var url = base + '?rating=' + entry.rating + '&novelty=' + entry.novelty + '&time=' + encodeURIComponent(entry.time);
-    var img = new Image();
-    img.src = url;
+    fetch(url, { method: 'GET', mode: 'no-cors' }).catch(function() {});
   }
 
   function showView(view) {
